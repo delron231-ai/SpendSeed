@@ -34,7 +34,19 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ onOpenAppPreview }) => {
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+          <a
+            href="#goal-planner"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-2 rounded-sm"
+          >
+            Goal planner
+          </a>
+          <a
+            href="#how-it-works"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-2 rounded-sm"
+          >
+            The Ladder
+          </a>
           <a
             href="#problem"
             className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-2 rounded-sm"
@@ -42,22 +54,16 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ onOpenAppPreview }) => {
             The problem
           </a>
           <a
-            href="#how-it-works"
+            href="#partner-pots"
             className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-2 rounded-sm"
           >
-            How it works
+            Partner pots
           </a>
           <a
-            href="#remainder"
+            href="#whats-different"
             className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-2 rounded-sm"
           >
-            The remainder
-          </a>
-          <a
-            href="#model"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-2 rounded-sm"
-          >
-            The model
+            What's different
           </a>
 
           {/* Prototype Badge / App Trigger */}

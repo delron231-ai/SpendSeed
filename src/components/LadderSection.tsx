@@ -86,7 +86,7 @@ export const LadderSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
-            className="relative flex flex-col gap-4 bg-[#F8FAF7] p-6 sm:p-8 rounded-xl border border-[#9FBF9C]"
+            className="relative flex flex-col gap-6 bg-[#F8FAF7] p-6 sm:p-8 rounded-xl border border-[#9FBF9C]"
           >
             {/* Number badge on the vertical line */}
             <div className="absolute -left-[32px] sm:-left-[48px] top-6 w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#9FBF9C] text-[#125238] font-mono-code font-bold text-[13px] sm:text-[15px] flex items-center justify-center border-2 border-[#F2F4F1]">
@@ -99,12 +99,9 @@ export const LadderSection: React.FC = () => {
                   Goals
                 </h3>
                 <span className="mono-caption font-mono-code text-[11px] sm:text-[12px] bg-[#9FBF9C]/30 text-[#125238] px-2.5 py-0.5 rounded-full font-medium">
-                  STAGE 2 · ACTIVE (40%)
+                  STAGE 2 · ACTIVE
                 </span>
               </div>
-              <span className="font-mono-code text-[13px] text-[#496548] tabular-nums font-medium">
-                S$740 / S$1,850
-              </span>
             </div>
 
             {/* One line of copy as requested in Requirement 4 */}
@@ -112,15 +109,19 @@ export const LadderSection: React.FC = () => {
               Once the buffer is full, every spare cent flows toward your short-term desires.
             </p>
 
-            {/* Horizontal Progress Track (Animates 900ms left-to-right, staggered 200ms) */}
-            <div className="w-full h-3 bg-[#DCE3DD] rounded-full overflow-hidden mt-2">
-              <motion.div
-                initial={{ width: '0%' }}
-                whileInView={{ width: '40%' }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="h-full bg-[#9FBF9C] rounded-full"
-              ></motion.div>
+            {/* Stage 2 Goal Progress Card */}
+            <div className="flex flex-col gap-3 p-5 bg-[#E8ECE7] rounded-xl border border-[#c0c9c1]">
+              <div className="flex justify-between items-center text-[14px]">
+                <span className="font-sans-body font-semibold text-[#191C1B]">Target: Osaka Trip</span>
+                <span className="font-mono-code text-[#125238] font-bold tabular-nums">S$740 / S$3,000</span>
+              </div>
+              <div className="w-full h-2.5 bg-[#DCE3DD] rounded-full overflow-hidden">
+                <div className="h-full bg-[#9FBF9C] rounded-full w-[25%] transition-all duration-500" />
+              </div>
+              <div className="flex justify-between items-center pt-1 text-[12px] font-mono-code text-[#404943]">
+                <span>Pace: November 2027</span>
+                <a href="#goal-planner" className="text-[#2F6B4F] font-semibold hover:underline">Customize in Goal Planner ↑</a>
+              </div>
             </div>
           </motion.div>
 

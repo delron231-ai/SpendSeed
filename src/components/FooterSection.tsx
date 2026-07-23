@@ -21,10 +21,11 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenAppPreview }
           </div>
 
           <div className="flex flex-wrap items-center gap-6 text-[14px] font-sans-body">
+            <a href="#goal-planner" className="hover:text-[#9FBF9C] transition-colors">Goal planner</a>
+            <a href="#how-it-works" className="hover:text-[#9FBF9C] transition-colors">The Ladder</a>
             <a href="#problem" className="hover:text-[#9FBF9C] transition-colors">The problem</a>
-            <a href="#how-it-works" className="hover:text-[#9FBF9C] transition-colors">How it works</a>
-            <a href="#remainder" className="hover:text-[#9FBF9C] transition-colors">The remainder</a>
-            <a href="#model" className="hover:text-[#9FBF9C] transition-colors">The model</a>
+            <a href="#partner-pots" className="hover:text-[#9FBF9C] transition-colors">Partner pots</a>
+            <a href="#whats-different" className="hover:text-[#9FBF9C] transition-colors">What's different</a>
             {onOpenAppPreview && (
               <button
                 onClick={onOpenAppPreview}
