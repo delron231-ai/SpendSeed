@@ -4,8 +4,8 @@ import { HeroSection } from './components/HeroSection';
 import { CommitmentCalculatorSection } from './components/CommitmentCalculatorSection';
 import { ProblemSection } from './components/ProblemSection';
 import { HowItWorksSection } from './components/HowItWorksSection';
-import { WhySingaporeSection } from './components/WhySingaporeSection';
-import { MerchantEconomicsSection } from './components/MerchantEconomicsSection';
+import { WhatsTheCatchSection } from './components/WhatsTheCatchSection';
+import { WhoYouCanCommitWithSection } from './components/WhoYouCanCommitWithSection';
 import { LadderSection } from './components/LadderSection';
 import { WhatsDifferentSection } from './components/WhatsDifferentSection';
 import { FooterSection } from './components/FooterSection';
@@ -30,14 +30,14 @@ export default function App() {
         {/* 4. The Problem Statistics */}
         <ProblemSection />
 
-        {/* 5. How It Works (3 Steps) */}
+        {/* 5. How It Works */}
         <HowItWorksSection />
 
-        {/* 6. The Rate Gap (Why Singapore) */}
-        <WhySingaporeSection />
+        {/* 6. What's The Catch */}
+        <WhatsTheCatchSection />
 
-        {/* 7. Merchant Fundability */}
-        <MerchantEconomicsSection />
+        {/* 7. Who You Can Commit With */}
+        <WhoYouCanCommitWithSection />
 
         {/* 8. The Ladder */}
         <LadderSection />

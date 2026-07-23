@@ -34,46 +34,46 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ onOpenAppPreview }) => {
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-5 lg:gap-7">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-6">
           <a
             href="#commitment-calculator"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1.5 rounded-sm"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1 rounded-sm"
           >
             Calculator
           </a>
           <a
             href="#problem"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1.5 rounded-sm"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1 rounded-sm"
           >
             Problem
           </a>
           <a
             href="#how-it-works"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1.5 rounded-sm"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1 rounded-sm"
           >
             How it works
           </a>
           <a
-            href="#why-singapore"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1.5 rounded-sm"
+            href="#whats-the-catch"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1 rounded-sm"
           >
-            Rate gap
+            What's the catch
           </a>
           <a
-            href="#merchant-economics"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1.5 rounded-sm"
+            href="#who-you-can-commit-with"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1 rounded-sm"
           >
             Merchants
           </a>
           <a
             href="#the-ladder"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1.5 rounded-sm"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1 rounded-sm"
           >
             The Ladder
           </a>
           <a
             href="#the-model"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1.5 rounded-sm"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1 rounded-sm"
           >
             The model
           </a>
