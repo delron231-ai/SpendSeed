@@ -34,46 +34,52 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ onOpenAppPreview }) => {
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-4 lg:gap-6">
+        <nav className="hidden lg:flex items-center gap-3 xl:gap-5">
           <a
             href="#commitment-calculator"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1 rounded-sm"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 py-1 px-1 rounded-sm"
           >
             Calculator
           </a>
           <a
-            href="#problem"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1 rounded-sm"
-          >
-            Problem
-          </a>
-          <a
             href="#how-it-works"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1 rounded-sm"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 py-1 px-1 rounded-sm"
           >
             How it works
           </a>
           <a
-            href="#whats-the-catch"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1 rounded-sm"
+            href="#the-rest-of-the-app"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 py-1 px-1 rounded-sm"
           >
-            What's the catch
+            Features
+          </a>
+          <a
+            href="#your-first-year"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 py-1 px-1 rounded-sm"
+          >
+            Timeline
+          </a>
+          <a
+            href="#whats-the-catch"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 py-1 px-1 rounded-sm"
+          >
+            Mechanics
           </a>
           <a
             href="#who-you-can-commit-with"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1 rounded-sm"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 py-1 px-1 rounded-sm"
           >
             Merchants
           </a>
           <a
             href="#the-ladder"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1 rounded-sm"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 py-1 px-1 rounded-sm"
           >
-            The Ladder
+            Restraint
           </a>
           <a
             href="#the-model"
-            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 action-target py-1 px-1 rounded-sm"
+            className="text-[13px] font-sans-body font-medium text-[#404943] hover:text-[#125238] transition-colors duration-150 py-1 px-1 rounded-sm"
           >
             The model
           </a>
@@ -81,7 +87,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ onOpenAppPreview }) => {
           {/* Prototype Badge / App Trigger */}
           <button
             onClick={onOpenAppPreview}
-            className="inline-flex items-center gap-1.5 px-3 py-1 border border-[#D9A521] text-[#5e4400] bg-[#ffdfa0]/20 rounded-full text-[12px] font-mono-code font-medium hover:bg-[#ffdfa0]/40 transition-colors duration-150 action-target cursor-pointer ml-1"
+            className="inline-flex items-center gap-1.5 px-3 py-1 border border-[#D9A521] text-[#5e4400] bg-[#ffdfa0]/20 rounded-full text-[12px] font-mono-code font-medium hover:bg-[#ffdfa0]/40 transition-colors duration-150 cursor-pointer ml-1"
             title="Launch interactive SpendSeed mobile prototype"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#D9A521] animate-pulse"></span>

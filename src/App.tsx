@@ -4,6 +4,8 @@ import { HeroSection } from './components/HeroSection';
 import { CommitmentCalculatorSection } from './components/CommitmentCalculatorSection';
 import { ProblemSection } from './components/ProblemSection';
 import { HowItWorksSection } from './components/HowItWorksSection';
+import { RestOfAppSection } from './components/RestOfAppSection';
+import { TimelineSection } from './components/TimelineSection';
 import { WhatsTheCatchSection } from './components/WhatsTheCatchSection';
 import { WhoYouCanCommitWithSection } from './components/WhoYouCanCommitWithSection';
 import { LadderSection } from './components/LadderSection';
@@ -30,23 +32,29 @@ export default function App() {
         {/* 4. The Problem Statistics */}
         <ProblemSection />
 
-        {/* 5. How It Works */}
+        {/* 5. How It Works (3 steps) */}
         <HowItWorksSection />
 
-        {/* 6. What's The Catch */}
+        {/* 6. The Rest Of The App */}
+        <RestOfAppSection />
+
+        {/* 7. Your First Year (Timeline) */}
+        <TimelineSection />
+
+        {/* 8. What's The Catch */}
         <WhatsTheCatchSection />
 
-        {/* 7. Who You Can Commit With */}
+        {/* 9. Who You Can Commit With */}
         <WhoYouCanCommitWithSection />
 
-        {/* 8. The Ladder */}
+        {/* 10. The Ladder (What we won't let you do) */}
         <LadderSection />
 
-        {/* 9. The Model */}
+        {/* 11. The Model */}
         <WhatsDifferentSection />
       </main>
 
-      {/* 10. Footer */}
+      {/* 12. Footer */}
       <FooterSection onOpenAppPreview={() => setIsAppDrawerOpen(true)} />
 
       {/* Interactive Mobile App Prototype Modal */}
