@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --paper: #F2F4F1;
+    --ink: #191C1B;
+    --forest: #2F6B4F;
+    --sage: #9FBF9C;
+    --turmeric: #D9A521;
+    --mist: #DCE3DD;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Force tabular numbers for figures */
+  .tabular-nums,
+  [data-numeric="tabular"] {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom Typography & Fluid Typescale */
+.font-serif-display {
+  font-family: 'Newsreader', 'Source Serif 4', Georgia, serif;
+}
+
+.font-sans-body {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-mono-code {
+  font-family: 'Geist Mono', 'JetBrains Mono', monospace;
+}
+
+.hero-headline {
+  font-family: 'Newsreader', 'Source Serif 4', Georgia, serif;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.section-heading {
+  font-family: 'Newsreader', 'Source Serif 4', Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.15;
+}
+
+.remainder-number {
+  font-family: 'Newsreader', 'Source Serif 4', Georgia, serif;
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: 1;
+}
+
+.remainder-plus {
+  font-family: 'Geist Mono', 'JetBrains Mono', monospace;
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: 1;
+  color: #D9A521;
+}
+
+.body-copy {
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 65ch;
+}
+
+.mono-caption {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: none; /* uppercase off */
+}
+
+/* Focus ring and smooth transitions */
+.action-target {
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, opacity 150ms ease;
+}
+
+.action-target:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #2F6B4F;
+}
+
+/* Material symbols adjustments */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F2F4F1;
+}
+::-webkit-scrollbar-thumb {
+  background: #DCE3DD;
+  border-radius: 3px;
+}
