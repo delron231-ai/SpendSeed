@@ -4,6 +4,7 @@ import { HeroSection } from './components/HeroSection';
 import { RoundUpTicker } from './components/RoundUpTicker';
 import { GoalPlannerSection } from './components/GoalPlannerSection';
 import { LadderSection } from './components/LadderSection';
+import { HowMoneyMovesSection } from './components/HowMoneyMovesSection';
 import { ProblemSection } from './components/ProblemSection';
 import { PartnerCalculatorSection } from './components/PartnerCalculatorSection';
 import { WhatsDifferentSection } from './components/WhatsDifferentSection';
@@ -31,6 +32,9 @@ export default function App() {
 
         {/* 5. The Ladder */}
         <LadderSection />
+
+        {/* 6. How Money Moves */}
+        <HowMoneyMovesSection />
 
         {/* 6. The Problem Statistics */}
         <ProblemSection />
