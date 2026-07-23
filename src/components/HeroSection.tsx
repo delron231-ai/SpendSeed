@@ -18,39 +18,39 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenAppPreview }) =>
             transition={{ duration: 0.5, ease: 'easeOut' }}
             className="flex flex-col gap-6 sm:gap-8"
           >
-            {/* Mono Caption (Requirement 3: 13px, letter-spacing 0.04em, uppercase off) */}
-            <div className="mono-caption font-mono-code text-[#2F6B4F] font-medium text-[13px] tracking-[0.04em]">
-              for singapore, 18–30
+            {/* Eyebrow (Mono, lighter Ink) */}
+            <div className="mono-caption font-mono-code text-[#707972] font-medium text-[13px] tracking-[0.04em]">
+              For Singapore
             </div>
 
-            {/* Hero Headline (Requirement 3: clamp(3rem, 7vw, 6.5rem), Newsreader, line-height 1.05, letter-spacing -0.02em) */}
-            <h1 className="hero-headline text-[#191C1B] font-serif-display font-semibold">
-              Buffer first.<br />
-              Then goals.<br />
-              Then seed.
+            {/* Headline (Newsreader, very large, three lines) */}
+            <h1 className="hero-headline text-[#191C1B] font-serif-display font-semibold text-[clamp(2.75rem,6vw,5.5rem)] leading-[1.08] tracking-tight">
+              Your savings<br />
+              should pay you<br />
+              on day one.
             </h1>
 
-            {/* Body Copy (Requirement 3: 17px, line-height 1.6, max-width 65 characters) */}
+            {/* Sub-line (Body) */}
             <p className="body-copy font-sans-body text-[#404943] text-[17px] leading-[1.6] max-w-[65ch]">
-              SpendSeed decides where your next dollar goes so you don't have to. Built on a philosophy of financial stillness, it moves money based on priority, not panic.
+              Commit money you've already set aside for something. Get the value up front, as credit with the merchant you were going to spend it with. Your money stays yours, in your own account, and you get it all back.
             </p>
 
-            {/* CTA Buttons */}
+            {/* Buttons */}
             <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-2">
               <a
-                href="#how-it-works"
-                className="action-target inline-flex items-center justify-center px-7 py-3.5 bg-[#2F6B4F] text-[#F2F4F1] font-sans-body font-medium text-[15px] rounded-md hover:bg-[#125238] active:scale-[0.99]"
+                href="#partner-pots"
+                className="action-target inline-flex items-center justify-center px-7 py-3.5 bg-[#2F6B4F] text-[#F2F4F1] font-sans-body font-medium text-[15px] rounded-md hover:bg-[#125238] active:scale-[0.99] transition-all"
               >
-                See how it works
+                See what your money could unlock
               </a>
 
-              <button
-                onClick={onOpenAppPreview}
-                className="action-target inline-flex items-center gap-2 text-[#191C1B] font-sans-body font-medium text-[15px] underline underline-offset-4 hover:text-[#2F6B4F] cursor-pointer"
+              <a
+                href="#how-it-works"
+                className="action-target inline-flex items-center gap-1.5 text-[#191C1B] font-sans-body font-medium text-[15px] underline underline-offset-4 hover:text-[#2F6B4F] transition-colors"
               >
-                <span>Launch App Prototype</span>
+                <span>How this works</span>
                 <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-              </button>
+              </a>
             </div>
           </motion.div>
 
@@ -77,23 +77,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenAppPreview }) =>
                 </button>
               </div>
 
-              {/* Phase Banner */}
+              {/* Ladder Header */}
               <div className="flex flex-col gap-1">
                 <span className="mono-caption text-[11px] font-mono-code text-[#707972] tracking-[0.04em]">
-                  CURRENT PHASE
+                  THE SYSTEM
                 </span>
-                <h2 className="font-serif-display text-3xl font-medium text-[#191C1B]">
-                  Buffer
+                <h2 className="font-serif-display text-2xl font-medium text-[#191C1B]">
+                  Two-tier allocation
                 </h2>
               </div>
 
-              {/* Ladder Vessel Sequence */}
+              {/* Ladder Vessel Sequence - 2 Tiers */}
               <div className="relative pl-6 flex flex-col gap-6">
-                {/* Connecting Vertical Line */}
-                <div className="absolute left-[9px] top-3 bottom-3 w-[2px]">
-                  <div className="h-[45%] bg-[#2F6B4F]"></div>
-                  <div className="h-[55%] bg-[#DCE3DD]"></div>
-                </div>
+                {/* Connecting Vertical Line between 1 & 2 */}
+                <div className="absolute left-[9px] top-4 bottom-4 w-[2px] bg-[#2F6B4F]" />
 
                 {/* Vessel 1: Buffer */}
                 <div className="relative flex flex-col gap-2 bg-[#F2F4F1] p-3.5 rounded-lg border border-[#2F6B4F]">
@@ -102,40 +99,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenAppPreview }) =>
                   </div>
                   <div className="flex justify-between items-center text-[13px] font-sans-body font-medium">
                     <span className="text-[#191C1B]">Buffer</span>
-                    <span className="tabular-nums font-mono-code text-[#2F6B4F] text-[12px]">S$1,840 / Done</span>
+                    <span className="font-mono-code text-[#2F6B4F] text-[11px]">Required first</span>
                   </div>
                   <div className="w-full h-1.5 bg-[#DCE3DD] rounded-full overflow-hidden">
                     <div className="h-full bg-[#2F6B4F] w-full"></div>
                   </div>
                 </div>
 
-                {/* Vessel 2: Goals */}
+                {/* Vessel 2: Commitment Pots */}
                 <div className="relative flex flex-col gap-2 bg-[#F2F4F1] p-3.5 rounded-lg border border-[#9FBF9C]">
-                  <div className="absolute -left-[23px] top-3.5 w-5 h-5 rounded-full bg-[#9FBF9C] text-[#191C1B] font-mono-code text-[11px] flex items-center justify-center font-bold">
+                  <div className="absolute -left-[23px] top-3.5 w-5 h-5 rounded-full bg-[#9FBF9C] text-[#125238] font-mono-code text-[11px] flex items-center justify-center font-bold">
                     2
                   </div>
                   <div className="flex justify-between items-center text-[13px] font-sans-body font-medium">
-                    <span className="text-[#191C1B]">Personal Goals</span>
-                    <span className="tabular-nums font-mono-code text-[#496548] text-[12px]">3 Active (40%)</span>
+                    <span className="text-[#191C1B]">Commitment pots</span>
+                    <span className="font-mono-code text-[#125238] text-[11px]">The product</span>
                   </div>
                   <div className="w-full h-1.5 bg-[#DCE3DD] rounded-full overflow-hidden">
-                    <div className="h-full bg-[#9FBF9C] w-[40%]"></div>
+                    <div className="h-full bg-[#9FBF9C] w-[60%]"></div>
                   </div>
-                </div>
-
-                {/* Vessel 3: Seed (Locked) */}
-                <div className="relative flex flex-col gap-2 bg-[#F2F4F1]/60 p-3.5 rounded-lg border border-[#DCE3DD] opacity-50">
-                  <div className="absolute -left-[23px] top-3.5 w-5 h-5 rounded-full bg-[#DCE3DD] text-[#707972] font-mono-code text-[11px] flex items-center justify-center font-bold">
-                    3
-                  </div>
-                  <div className="flex justify-between items-center text-[13px] font-sans-body font-medium">
-                    <div className="flex items-center gap-1.5 text-[#707972]">
-                      <span>Seed Fund</span>
-                      <span className="material-symbols-outlined text-[14px]">lock</span>
-                    </div>
-                    <span className="font-mono-code text-[#707972] text-[11px]">Locked</span>
-                  </div>
-                  <div className="w-full h-1.5 bg-[#DCE3DD] rounded-full"></div>
                 </div>
               </div>
 
@@ -144,7 +126,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenAppPreview }) =>
                 onClick={onOpenAppPreview}
                 className="w-full py-3 bg-[#2F6B4F] text-white rounded-lg text-[13px] font-sans-body font-medium hover:bg-[#125238] transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-xs"
               >
-                <span>Explore Full App Screens (7 Views)</span>
+                <span>Explore App Prototype</span>
                 <span className="material-symbols-outlined text-[16px]">touch_app</span>
               </button>
 

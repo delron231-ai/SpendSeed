@@ -12,12 +12,12 @@ const RULES: MoneyRule[] = [
   {
     num: 1,
     title: 'Everything fills the Buffer first',
-    copy: 'Until you hold one month of expenses in cash, every captured dollar goes there.',
+    copy: 'Until you hold one month of expenses in cash, every dollar goes there.',
   },
   {
     num: 2,
-    title: 'If the Buffer drops, Seed pauses',
-    copy: 'Spend your emergency fund and contributions redirect to refill it. We never sell your investments to do this.',
+    title: 'If the Buffer drops, commitments pause',
+    copy: 'Spend your emergency fund and contributions redirect to refill it.',
   },
   {
     num: 3,
@@ -33,7 +33,7 @@ const RULES: MoneyRule[] = [
   {
     num: 5,
     title: 'You choose what happens at the finish line',
-    copy: 'Spend it, roll it into the next goal, or move it to Seed.',
+    copy: 'Spend it or roll it into the next goal.',
   },
 ];
 
@@ -80,7 +80,7 @@ export const HowMoneyMovesSection: React.FC = () => {
                   : 'bg-[#F2F4F1] border border-transparent hover:border-[#DCE3DD]'
               }`}
             >
-              {/* Rule Number Badge resting on vertical line */}
+              {/* Rule Number Badge in JetBrains Mono resting on vertical line */}
               <div
                 className={`absolute -left-[29px] sm:-left-[37px] top-6 w-8 h-8 rounded-full font-mono-code font-bold text-[14px] flex items-center justify-center border-2 ${
                   rule.emphasized

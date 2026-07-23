@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 
 interface AppPrototypeDrawerProps {
   isOpen: boolean;
@@ -7,25 +7,11 @@ interface AppPrototypeDrawerProps {
 }
 
 export const AppPrototypeDrawer: React.FC<AppPrototypeDrawerProps> = ({ isOpen, onClose }) => {
-  const [activeTab, setActiveTab] = useState<'onboarding' | 'ladder' | 'goal' | 'ledger' | 'rules' | 'partners' | 'seed' | 'profile'>('ladder');
+  const [activeTab, setActiveTab] = useState<'onboarding' | 'ladder' | 'goal' | 'partners' | 'profile'>('ladder');
   
   // Interactive Goal Selector state
   const [selectedGoal, setSelectedGoal] = useState<string>('osaka');
   const [extraMonthlyPace, setExtraMonthlyPace] = useState<number>(0);
-
-  // Interactive Rules Toggles
-  const [rules, setRules] = useState([
-    { id: '1', title: 'Every food delivery order', action: 'Move S$3.00 to Osaka Goal', active: true, saved: 'S$36.00' },
-    { id: '2', title: 'Take MRT instead of Grab', action: 'Move S$8.50 difference to Buffer', active: true, saved: 'S$112.50' },
-    { id: '3', title: 'Payday round-up boost', action: 'Move S$150 to Seed', active: false, saved: 'S$450.00' },
-  ]);
-
-  // Seed Variant Toggle
-  const [seedVariant, setSeedVariant] = useState<'locked' | 'unlocked'>('locked');
-
-  const toggleRule = (id: string) => {
-    setRules(prev => prev.map(r => r.id === id ? { ...r, active: !r.active } : r));
-  };
 
   if (!isOpen) return null;
 
@@ -44,7 +30,7 @@ export const AppPrototypeDrawer: React.FC<AppPrototypeDrawerProps> = ({ isOpen, 
             <span className="material-symbols-outlined text-[#2F6B4F]">grain</span>
             <span className="font-serif-display font-semibold text-[#125238] text-lg">SpendSeed App Prototype</span>
             <span className="hidden sm:inline-block text-[11px] font-mono-code bg-[#D9A521]/20 text-[#5e4400] px-2 py-0.5 rounded-full ml-2">
-              Interactive Mockup · Hardcoded Client State
+              Interactive Mockup
             </span>
           </div>
           <button
@@ -83,36 +69,12 @@ export const AppPrototypeDrawer: React.FC<AppPrototypeDrawerProps> = ({ isOpen, 
             3. Goal Details
           </button>
           <button
-            onClick={() => setActiveTab('ledger')}
-            className={`px-3 py-1.5 rounded-md transition-colors whitespace-nowrap cursor-pointer ${
-              activeTab === 'ledger' ? 'bg-[#2F6B4F] text-white font-semibold' : 'text-[#404943] hover:bg-[#E8ECE7]'
-            }`}
-          >
-            4. Activity Ledger
-          </button>
-          <button
-            onClick={() => setActiveTab('rules')}
-            className={`px-3 py-1.5 rounded-md transition-colors whitespace-nowrap cursor-pointer ${
-              activeTab === 'rules' ? 'bg-[#2F6B4F] text-white font-semibold' : 'text-[#404943] hover:bg-[#E8ECE7]'
-            }`}
-          >
-            5. Auto Rules
-          </button>
-          <button
             onClick={() => setActiveTab('partners')}
             className={`px-3 py-1.5 rounded-md transition-colors whitespace-nowrap cursor-pointer ${
               activeTab === 'partners' ? 'bg-[#2F6B4F] text-white font-semibold' : 'text-[#404943] hover:bg-[#E8ECE7]'
             }`}
           >
-            6. Partner Pots
-          </button>
-          <button
-            onClick={() => setActiveTab('seed')}
-            className={`px-3 py-1.5 rounded-md transition-colors whitespace-nowrap cursor-pointer ${
-              activeTab === 'seed' ? 'bg-[#2F6B4F] text-white font-semibold' : 'text-[#404943] hover:bg-[#E8ECE7]'
-            }`}
-          >
-            7. Seed Portfolio
+            4. Partner Pots
           </button>
           <button
             onClick={() => setActiveTab('profile')}
@@ -120,7 +82,7 @@ export const AppPrototypeDrawer: React.FC<AppPrototypeDrawerProps> = ({ isOpen, 
               activeTab === 'profile' ? 'bg-[#2F6B4F] text-white font-semibold' : 'text-[#404943] hover:bg-[#E8ECE7]'
             }`}
           >
-            8. You / Health
+            5. Governance / Safety
           </button>
         </div>
 
@@ -132,8 +94,8 @@ export const AppPrototypeDrawer: React.FC<AppPrototypeDrawerProps> = ({ isOpen, 
             {activeTab === 'onboarding' && (
               <div className="flex flex-col gap-6">
                 <div>
-                  <span className="mono-caption font-mono-code text-[#2F6B4F] text-[11px] tracking-wider">ONBOARDING STEP 1</span>
-                  <h2 className="font-serif-display text-2xl font-semibold text-[#191C1B]">Set your 18-month intention</h2>
+                  <span className="mono-caption font-mono-code text-[#2F6B4F] text-[11px] tracking-wider">ONBOARDING</span>
+                  <h2 className="font-serif-display text-2xl font-semibold text-[#191C1B]">Set your commitment goal</h2>
                   <p className="text-[14px] text-[#404943] mt-1">What are we saving toward once your Buffer is secured?</p>
                 </div>
 
@@ -171,7 +133,7 @@ export const AppPrototypeDrawer: React.FC<AppPrototypeDrawerProps> = ({ isOpen, 
                   onClick={() => setActiveTab('ladder')}
                   className="w-full py-3 bg-[#2F6B4F] text-white rounded-lg font-sans-body font-medium hover:bg-[#125238] transition-colors cursor-pointer text-center"
                 >
-                  Continue to Home Dashboard
+                  Continue to Dashboard
                 </button>
               </div>
             )}
@@ -181,12 +143,12 @@ export const AppPrototypeDrawer: React.FC<AppPrototypeDrawerProps> = ({ isOpen, 
               <div className="flex flex-col gap-6">
                 <div className="flex items-center justify-between border-b border-[#DCE3DD] pb-3">
                   <div>
-                    <span className="mono-caption text-[11px] font-mono-code text-[#707972]">GOOD EVENING</span>
+                    <span className="mono-caption text-[11px] font-mono-code text-[#707972]">WELCOME BACK</span>
                     <h2 className="font-serif-display text-2xl font-semibold text-[#191C1B]">Wei Jie</h2>
                   </div>
                   <div className="text-right">
-                    <span className="text-[11px] font-mono-code text-[#2F6B4F] font-semibold">THIS WEEK</span>
-                    <div className="font-mono-code text-lg text-[#125238] font-bold tabular-nums">+S$18.40</div>
+                    <span className="text-[11px] font-mono-code text-[#2F6B4F] font-semibold">MONTHLY FLOW</span>
+                    <div className="font-mono-code text-lg text-[#125238] font-bold tabular-nums">+S$250.00</div>
                   </div>
                 </div>
 
@@ -194,22 +156,22 @@ export const AppPrototypeDrawer: React.FC<AppPrototypeDrawerProps> = ({ isOpen, 
                 <div className="p-4 bg-[#F2F4F1] rounded-xl border border-[#2F6B4F] flex flex-col gap-2">
                   <div className="flex justify-between items-center">
                     <span className="font-serif-display font-medium text-[#191C1B]">1. Buffer</span>
-                    <span className="font-mono-code text-[12px] text-[#2F6B4F] font-bold tabular-nums">S$1,840 / S$1,840</span>
+                    <span className="font-mono-code text-[11px] text-[#2F6B4F] font-bold uppercase">Required first</span>
                   </div>
                   <div className="w-full h-2 bg-[#DCE3DD] rounded-full overflow-hidden">
                     <div className="h-full bg-[#2F6B4F] w-full"></div>
                   </div>
-                  <span className="text-[12px] text-[#707972]">3 months living expenses secured. Money flows down to Stage 2.</span>
+                  <span className="text-[12px] text-[#707972]">1 month expenses secured in cash.</span>
                 </div>
 
-                {/* Vessel 2: Goals */}
+                {/* Vessel 2: Commitment Pots */}
                 <div className="p-4 bg-[#F2F4F1] rounded-xl border border-[#9FBF9C] flex flex-col gap-3">
                   <div className="flex justify-between items-center">
-                    <span className="font-serif-display font-medium text-[#191C1B]">2. Goals (Active)</span>
-                    <span className="font-mono-code text-[12px] text-[#496548] font-bold tabular-nums">S$740 / S$3,000</span>
+                    <span className="font-serif-display font-medium text-[#191C1B]">2. Commitment pots</span>
+                    <span className="font-mono-code text-[11px] text-[#125238] font-bold uppercase">The product</span>
                   </div>
                   <div className="w-full h-2 bg-[#DCE3DD] rounded-full overflow-hidden">
-                    <div className="h-full bg-[#9FBF9C] w-[24.6%]"></div>
+                    <div className="h-full bg-[#9FBF9C] w-[60%]"></div>
                   </div>
                   
                   {/* Goals breakdown */}
@@ -220,60 +182,48 @@ export const AppPrototypeDrawer: React.FC<AppPrototypeDrawerProps> = ({ isOpen, 
                     >
                       <div className="flex items-center gap-2">
                         <span className="material-symbols-outlined text-[18px] text-[#2F6B4F]">flight</span>
-                        <span className="text-[13px] font-medium">Trip to Osaka</span>
+                        <span className="text-[13px] font-medium">Trip to Osaka (Skylane Credit)</span>
                       </div>
-                      <span className="font-mono-code text-[12px] tabular-nums text-[#2F6B4F]">S$740 / S$3,000</span>
+                      <span className="font-mono-code text-[12px] tabular-nums text-[#2F6B4F]">S$1,800 / S$3,000</span>
                     </div>
                   </div>
-                </div>
-
-                {/* Vessel 3: Seed (Locked) */}
-                <div className="p-4 bg-[#F2F4F1]/60 rounded-xl border border-[#DCE3DD] opacity-60 flex flex-col gap-2">
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-1.5">
-                      <span className="font-serif-display font-medium text-[#707972]">3. Seed</span>
-                      <span className="material-symbols-outlined text-[16px] text-[#707972]">lock</span>
-                    </div>
-                    <span className="font-mono-code text-[11px] text-[#707972]">Locked</span>
-                  </div>
-                  <span className="text-[12px] text-[#707972]">Will unlock automatically when your Osaka goal reaches 100%.</span>
                 </div>
               </div>
             )}
 
-            {/* SCREEN 3: GOAL DETAILS (OSAKA) */}
+            {/* SCREEN 3: GOAL DETAILS */}
             {activeTab === 'goal' && (
               <div className="flex flex-col gap-5">
                 <div className="flex items-center justify-between border-b border-[#DCE3DD] pb-3">
                   <button onClick={() => setActiveTab('ladder')} className="text-[#2F6B4F] text-[13px] font-mono-code flex items-center gap-1 cursor-pointer">
                     <span className="material-symbols-outlined text-[16px]">arrow_back</span>
-                    <span>Back to Home</span>
+                    <span>Back</span>
                   </button>
-                  <span className="text-[11px] font-mono-code bg-[#9FBF9C]/30 text-[#125238] px-2 py-0.5 rounded-full">Active Goal</span>
+                  <span className="text-[11px] font-mono-code bg-[#9FBF9C]/30 text-[#125238] px-2 py-0.5 rounded-full">Commitment Pot</span>
                 </div>
 
                 <div>
                   <h2 className="font-serif-display text-2xl font-semibold text-[#191C1B]">Trip to Osaka</h2>
-                  <p className="text-[13px] text-[#707972]">Target S$3,000 · Current S$740.00 (24.6%)</p>
+                  <p className="text-[13px] text-[#707972]">Partner: Skylane (Up-front merchant credit)</p>
                 </div>
 
                 {/* Pace forecast box */}
                 <div className="p-4 bg-[#E8ECE7] rounded-xl border border-[#DCE3DD] flex flex-col gap-3">
                   <span className="text-[12px] font-mono-code text-[#2F6B4F] font-semibold">FORECAST</span>
                   <div className="font-serif-display text-lg text-[#125238]">
-                    At your current pace (+S$18.40/wk) you land in <span className="font-bold underline">November 2027</span>.
+                    At your current pace (+S$250/mo) you land in <span className="font-bold underline">November 2026</span>.
                   </div>
 
                   {/* Pace lever slider */}
                   <div className="flex flex-col gap-2 pt-2 border-t border-[#DCE3DD]">
                     <div className="flex justify-between text-[12px] font-mono-code">
-                      <span>Add extra monthly boost:</span>
+                      <span>Extra monthly boost:</span>
                       <span className="font-bold text-[#2F6B4F]">+{extraMonthlyPace > 0 ? `S$${extraMonthlyPace}` : 'S$0'}/mo</span>
                     </div>
                     <input
                       type="range"
                       min="0"
-                      max="150"
+                      max="200"
                       step="25"
                       value={extraMonthlyPace}
                       onChange={(e) => setExtraMonthlyPace(Number(e.target.value))}
@@ -281,169 +231,52 @@ export const AppPrototypeDrawer: React.FC<AppPrototypeDrawerProps> = ({ isOpen, 
                     />
                     {extraMonthlyPace > 0 && (
                       <span className="text-[12px] text-[#125238] font-mono-code">
-                        🚀 Projected landing accelerated to <span className="font-bold">March 2027</span>!
+                        🚀 Landing date accelerated to <span className="font-bold">July 2026</span>!
                       </span>
                     )}
                   </div>
                 </div>
 
-                {/* Associated Funding Rules */}
+                {/* Associated Funding */}
                 <div className="flex flex-col gap-2">
-                  <span className="text-[12px] font-mono-code text-[#707972]">FUNDING SOURCES</span>
+                  <span className="text-[12px] font-mono-code text-[#707972]">MONTHLY FLOWS</span>
                   <div className="p-3 bg-white rounded-lg border border-[#DCE3DD] text-[13px] flex justify-between items-center">
-                    <span>Card round-ups (+0.40 average)</span>
-                    <span className="font-mono-code text-[#2F6B4F]">+S$12.40/wk</span>
+                    <span>Payday sweep</span>
+                    <span className="font-mono-code text-[#2F6B4F]">+S$150/mo</span>
                   </div>
                   <div className="p-3 bg-white rounded-lg border border-[#DCE3DD] text-[13px] flex justify-between items-center">
-                    <span>Food delivery rule (S$3 / order)</span>
-                    <span className="font-mono-code text-[#2F6B4F]">+S$6.00/wk</span>
+                    <span>Recurring allocation</span>
+                    <span className="font-mono-code text-[#2F6B4F]">+S$100/mo</span>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* SCREEN 4: ACTIVITY LEDGER */}
-            {activeTab === 'ledger' && (
-              <div className="flex flex-col gap-5">
-                <div className="flex justify-between items-center border-b border-[#DCE3DD] pb-3">
-                  <h2 className="font-serif-display text-2xl font-semibold text-[#191C1B]">Activity Ledger</h2>
-                  <span className="font-mono-code text-[12px] text-[#2F6B4F]">Last 7 days</span>
-                </div>
-
-                <div className="flex flex-col gap-3">
-                  <span className="text-[11px] font-mono-code text-[#707972]">TODAY</span>
-
-                  <div className="p-3 bg-white rounded-lg border border-[#DCE3DD] flex justify-between items-center">
-                    <div className="flex items-center gap-3">
-                      <span className="material-symbols-outlined text-[#2F6B4F]">coffee</span>
-                      <div>
-                        <div className="text-[14px] font-medium">Ah Huat Kopi</div>
-                        <div className="text-[11px] text-[#707972]">Card Spend S$4.60</div>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <span className="font-mono-code text-[13px] text-[#D9A521] font-bold">+S$0.40</span>
-                      <div className="text-[10px] text-[#707972]">Round-Up</div>
-                    </div>
-                  </div>
-
-                  <div className="p-3 bg-white rounded-lg border border-[#DCE3DD] flex justify-between items-center">
-                    <div className="flex items-center gap-3">
-                      <span className="material-symbols-outlined text-[#2F6B4F]">local_taxi</span>
-                      <div>
-                        <div className="text-[14px] font-medium">Grab Ride</div>
-                        <div className="text-[11px] text-[#707972]">Card Spend S$11.20</div>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <span className="font-mono-code text-[13px] text-[#D9A521] font-bold">+S$0.80</span>
-                      <div className="text-[10px] text-[#707972]">Round-Up</div>
-                    </div>
-                  </div>
-
-                  <span className="text-[11px] font-mono-code text-[#707972] mt-2">YESTERDAY</span>
-
-                  <div className="p-3 bg-white rounded-lg border border-[#DCE3DD] flex justify-between items-center bg-[#E8ECE7]">
-                    <div className="flex items-center gap-3">
-                      <span className="material-symbols-outlined text-[#2F6B4F]">bolt</span>
-                      <div>
-                        <div className="text-[14px] font-medium">Food Delivery Rule</div>
-                        <div className="text-[11px] text-[#707972]">Trigger: Deliveroo S$28.50</div>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <span className="font-mono-code text-[13px] text-[#2F6B4F] font-bold">+S$3.00</span>
-                      <div className="text-[10px] text-[#707972]">Auto Rule</div>
-                    </div>
-                  </div>
-
-                  <div className="p-3 bg-white rounded-lg border border-[#DCE3DD] flex justify-between items-center">
-                    <div className="flex items-center gap-3">
-                      <span className="material-symbols-outlined text-[#2F6B4F]">shopping_bag</span>
-                      <div>
-                        <div className="text-[14px] font-medium">FairPrice Finest</div>
-                        <div className="text-[11px] text-[#707972]">Card Spend S$38.15</div>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <span className="font-mono-code text-[13px] text-[#D9A521] font-bold">+S$0.85</span>
-                      <div className="text-[10px] text-[#707972]">Round-Up</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* SCREEN 5: AUTOMATED RULES */}
-            {activeTab === 'rules' && (
-              <div className="flex flex-col gap-5">
-                <div className="flex justify-between items-center border-b border-[#DCE3DD] pb-3">
-                  <h2 className="font-serif-display text-2xl font-semibold text-[#191C1B]">Automated Rules</h2>
-                  <span className="text-[11px] font-mono-code bg-[#2F6B4F]/10 text-[#2F6B4F] px-2 py-0.5 rounded-full">3 Active</span>
-                </div>
-
-                <p className="text-[13px] text-[#404943]">Rules move money based on your real choices. No manual transfers required.</p>
-
-                <div className="flex flex-col gap-3">
-                  {rules.map(rule => (
-                    <div key={rule.id} className="p-4 bg-white rounded-xl border border-[#DCE3DD] flex flex-col gap-3">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h4 className="font-medium text-[15px]">{rule.title}</h4>
-                          <span className="text-[13px] text-[#2F6B4F] font-mono-code">{rule.action}</span>
-                        </div>
-                        <button
-                          onClick={() => toggleRule(rule.id)}
-                          className={`w-11 h-6 rounded-full transition-colors relative cursor-pointer ${
-                            rule.active ? 'bg-[#2F6B4F]' : 'bg-[#DCE3DD]'
-                          }`}
-                        >
-                          <div
-                            className={`w-4 h-4 rounded-full bg-white absolute top-1 transition-transform ${
-                              rule.active ? 'left-6' : 'left-1'
-                            }`}
-                          />
-                        </button>
-                      </div>
-                      <div className="flex justify-between items-center text-[11px] font-mono-code text-[#707972] border-t border-[#F2F4F1] pt-2">
-                        <span>Captured so far</span>
-                        <span className="font-bold text-[#191C1B]">{rule.saved}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* SCREEN 6: PARTNER POTS */}
+            {/* SCREEN 4: PARTNER POTS */}
             {activeTab === 'partners' && (
               <div className="flex flex-col gap-5">
                 <div className="flex justify-between items-center border-b border-[#DCE3DD] pb-3">
                   <h2 className="font-serif-display text-2xl font-semibold text-[#191C1B]">Partner Rebate Pots</h2>
-                  <span className="text-[11px] font-mono-code text-[#D9A521] font-semibold">4.8% Max Rebate</span>
+                  <span className="text-[11px] font-mono-code text-[#D9A521] font-semibold">Up-front Merchant Value</span>
                 </div>
 
                 <div className="p-4 bg-[#EBEEEA] rounded-xl border border-[#DCE3DD] text-[13px] flex flex-col gap-2">
                   <div className="flex justify-between font-mono-code">
-                    <span>Traditional Bank Yield:</span>
-                    <span className="text-[#707972]">1.08%</span>
-                  </div>
-                  <div className="flex justify-between font-mono-code">
-                    <span>SpendSeed Buffer Yield:</span>
-                    <span className="text-[#2F6B4F]">2.10%</span>
+                    <span>Standard Bank Interest:</span>
+                    <span className="text-[#707972]">Minimal annual trickle</span>
                   </div>
                   <div className="flex justify-between font-mono-code font-bold text-[#D9A521] text-[14px]">
-                    <span>Partner Deployment Rebate:</span>
-                    <span>Up to 4.80%</span>
+                    <span>Partner Merchant Credit:</span>
+                    <span>Delivered Day One</span>
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-3">
                   {[
-                    { name: 'Skyward Travel', cat: 'Flight & Hotel Bookings', rebate: '4.8%', icon: 'flight' },
-                    { name: 'Modu Living', cat: 'Home & Office Furniture', rebate: '4.2%', icon: 'chair' },
-                    { name: 'Onyx Audio', cat: 'Noise Cancelling Headphones', rebate: '3.9%', icon: 'headphones' },
-                    { name: 'Common Ground Coffee', cat: 'Local Roasters', rebate: '3.5%', icon: 'local_cafe' },
+                    { name: 'Skylane', cat: 'Flight & Hotel Bookings', credit: 'S$240 credit', icon: 'flight' },
+                    { name: 'Rumah Living', cat: 'Home & Furniture', credit: 'S$1,800 credit', icon: 'chair' },
+                    { name: 'Ironhouse', cat: 'Gym & Studio Credit', credit: 'S$204 credit', icon: 'fitness_center' },
+                    { name: 'Voltbox', cat: 'Tech & Laptops', credit: 'S$180 credit', icon: 'laptop' },
                   ].map((p, idx) => (
                     <div key={idx} className="p-3 bg-white rounded-lg border border-[#DCE3DD] flex justify-between items-center">
                       <div className="flex items-center gap-3">
@@ -453,109 +286,34 @@ export const AppPrototypeDrawer: React.FC<AppPrototypeDrawerProps> = ({ isOpen, 
                           <div className="text-[11px] text-[#707972]">{p.cat}</div>
                         </div>
                       </div>
-                      <span className="font-mono-code font-bold text-[#D9A521] text-[14px]">{p.rebate} rebate</span>
+                      <span className="font-mono-code font-bold text-[#D9A521] text-[14px]">{p.credit}</span>
                     </div>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* SCREEN 7: SEED PORTFOLIO (LOCKED VS UNLOCKED VARIANT TOGGLE) */}
-            {activeTab === 'seed' && (
-              <div className="flex flex-col gap-5">
-                <div className="flex justify-between items-center border-b border-[#DCE3DD] pb-3">
-                  <h2 className="font-serif-display text-2xl font-semibold text-[#191C1B]">Seed Portfolio</h2>
-                  
-                  {/* Variant Switcher */}
-                  <div className="flex bg-[#E8ECE7] p-0.5 rounded-lg border border-[#DCE3DD] text-[11px] font-mono-code">
-                    <button
-                      onClick={() => setSeedVariant('locked')}
-                      className={`px-2 py-1 rounded-md cursor-pointer ${seedVariant === 'locked' ? 'bg-[#2F6B4F] text-white' : 'text-[#707972]'}`}
-                    >
-                      Locked
-                    </button>
-                    <button
-                      onClick={() => setSeedVariant('unlocked')}
-                      className={`px-2 py-1 rounded-md cursor-pointer ${seedVariant === 'unlocked' ? 'bg-[#2F6B4F] text-white' : 'text-[#707972]'}`}
-                    >
-                      Unlocked
-                    </button>
-                  </div>
-                </div>
-
-                {seedVariant === 'locked' ? (
-                  <div className="p-8 bg-[#E8ECE7] rounded-xl border border-[#DCE3DD] text-center flex flex-col items-center gap-4 my-4">
-                    <span className="material-symbols-outlined text-4xl text-[#707972]">lock_clock</span>
-                    <h3 className="font-serif-display text-xl font-medium text-[#191C1B]">
-                      Not yet. And that's on purpose.
-                    </h3>
-                    <p className="text-[14px] text-[#404943] leading-relaxed max-w-[360px]">
-                      Your Seed stage stays locked until Stage 2 (Osaka Goal) is 100% funded. We protect your peace of mind before exposing your cash to market risk.
-                    </p>
-                  </div>
-                ) : (
-                  <div className="flex flex-col gap-4">
-                    <div className="p-4 bg-[#125238] text-white rounded-xl flex justify-between items-center">
-                      <div>
-                        <span className="text-[11px] font-mono-code opacity-80">UNLOCKED SEED BALANCE</span>
-                        <div className="font-serif-display text-2xl font-bold tabular-nums">S$3,420.00</div>
-                      </div>
-                      <span className="font-mono-code text-[12px] bg-white/20 text-white px-2.5 py-1 rounded-full">+4.2% Return</span>
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                      <span className="text-[12px] font-mono-code text-[#707972]">DIVERSIFIED ALLOCATION</span>
-                      <div className="p-3 bg-white rounded-lg border border-[#DCE3DD] text-[13px] flex justify-between">
-                        <span>Global Low-Cost Equities (VWRA)</span>
-                        <span className="font-mono-code font-bold">55%</span>
-                      </div>
-                      <div className="p-3 bg-white rounded-lg border border-[#DCE3DD] text-[13px] flex justify-between">
-                        <span>Asian Technology Indices</span>
-                        <span className="font-mono-code font-bold">20%</span>
-                      </div>
-                      <div className="p-3 bg-white rounded-lg border border-[#DCE3DD] text-[13px] flex justify-between">
-                        <span>Singapore Govt Securities (SGS)</span>
-                        <span className="font-mono-code font-bold">20%</span>
-                      </div>
-                      <div className="p-3 bg-white rounded-lg border border-[#DCE3DD] text-[13px] flex justify-between">
-                        <span>Physical Gold Reserve</span>
-                        <span className="font-mono-code font-bold">5%</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* SCREEN 8: YOU / FINANCIAL HEALTH */}
+            {/* SCREEN 5: GOVERNANCE & SAFETY */}
             {activeTab === 'profile' && (
               <div className="flex flex-col gap-5">
                 <div className="flex justify-between items-center border-b border-[#DCE3DD] pb-3">
-                  <h2 className="font-serif-display text-2xl font-semibold text-[#191C1B]">Financial Health</h2>
-                  <span className="font-mono-code text-[11px] bg-[#2F6B4F] text-white px-2.5 py-0.5 rounded-full font-bold">Strong</span>
+                  <h2 className="font-serif-display text-2xl font-semibold text-[#191C1B]">System Safety</h2>
+                  <span className="font-mono-code text-[11px] bg-[#2F6B4F] text-white px-2.5 py-0.5 rounded-full font-bold">Protected</span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="p-3 bg-white rounded-lg border border-[#DCE3DD] flex flex-col gap-1">
-                    <span className="text-[11px] font-mono-code text-[#707972]">BUFFER CAPACITY</span>
-                    <span className="font-bold text-lg text-[#125238]">1.1 Months</span>
+                <div className="flex flex-col gap-3 text-[13px] text-[#404943]">
+                  <div className="p-3 bg-white rounded-lg border border-[#2F6B4F] flex flex-col gap-1">
+                    <span className="font-semibold text-[#191C1B]">Trust Account Custody</span>
+                    <span>Your principal remains with a licensed custodian at all times.</span>
                   </div>
                   <div className="p-3 bg-white rounded-lg border border-[#DCE3DD] flex flex-col gap-1">
-                    <span className="text-[11px] font-mono-code text-[#707972]">CONSISTENCY</span>
-                    <span className="font-bold text-lg text-[#125238]">11 / 12 Wks</span>
+                    <span className="font-semibold text-[#191C1B]">Buffer Priority</span>
+                    <span>1 month expenses held in cash before any commitment pot is funded.</span>
                   </div>
                   <div className="p-3 bg-white rounded-lg border border-[#DCE3DD] flex flex-col gap-1">
-                    <span className="text-[11px] font-mono-code text-[#707972]">ASSET DIVERSITY</span>
-                    <span className="font-bold text-lg text-[#125238]">4 Types</span>
+                    <span className="font-semibold text-[#191C1B]">Zero Exit Fee</span>
+                    <span>Leave a partner pot after 30 days without penalty.</span>
                   </div>
-                  <div className="p-3 bg-white rounded-lg border border-[#DCE3DD] flex flex-col gap-1">
-                    <span className="text-[11px] font-mono-code text-[#707972]">HIGH-COST DEBT</span>
-                    <span className="font-bold text-lg text-[#125238]">S$0.00</span>
-                  </div>
-                </div>
-
-                <div className="p-4 bg-[#E8ECE7] rounded-xl border border-[#DCE3DD] text-[13px] text-[#404943] leading-relaxed">
-                  "Your habits show strong financial stillness. You're capturing S$18.40/week without added budget strain."
                 </div>
               </div>
             )}
@@ -565,7 +323,7 @@ export const AppPrototypeDrawer: React.FC<AppPrototypeDrawerProps> = ({ isOpen, 
 
         {/* Modal Bottom Bar */}
         <div className="flex items-center justify-between px-6 py-3 bg-[#EBEEEA] border-t border-[#DCE3DD] text-[12px] font-mono-code text-[#707972]">
-          <span>SpendSeed UI v1.0 · Singapore Prototype</span>
+          <span>SpendSeed UI v2.0 · Singapore Prototype</span>
           <button onClick={onClose} className="text-[#2F6B4F] font-bold hover:underline cursor-pointer">
             Close Preview
           </button>

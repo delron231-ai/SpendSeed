@@ -50,10 +50,10 @@ export const ProblemSection: React.FC = () => {
             className="flex flex-col gap-3 text-center md:text-left"
           >
             <span className="section-heading font-serif-display text-[#125238] font-semibold tabular-nums">
-              1.08%
+              S$10/yr
             </span>
             <p className="body-copy font-sans-body text-[#404943] text-[16px] sm:text-[17px] leading-[1.6]">
-              The average real return on idle cash in standard savings accounts while life gets 4% more expensive.
+              The average interest trickle on S$1,000 of idle cash in standard savings accounts.
             </p>
           </motion.div>
 
@@ -74,7 +74,7 @@ export const ProblemSection: React.FC = () => {
 
           {/* Body Copy (Requirement 3: 17px, line-height 1.6, max-width 65ch) */}
           <p className="body-copy font-sans-body text-[#404943] text-[17px] leading-[1.6] max-w-[65ch]">
-            It's the friction of choice. In a world of 4% HYSAs, volatile tokens, and complex ETFs, we freeze. Idle money is expensive money. Most apps encourage gambling; we prioritize financial stillness.
+            It's the friction of choice. In a world of complex accounts, volatile tokens, and endless options, we freeze. Idle money is expensive money. Most apps encourage gambling; we prioritize financial stillness.
           </p>
         </motion.div>
 

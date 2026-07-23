@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { HeaderNav } from './components/HeaderNav';
 import { HeroSection } from './components/HeroSection';
-import { RoundUpTicker } from './components/RoundUpTicker';
-import { GoalPlannerSection } from './components/GoalPlannerSection';
-import { LadderSection } from './components/LadderSection';
-import { HowMoneyMovesSection } from './components/HowMoneyMovesSection';
+import { CommitmentCalculatorSection } from './components/CommitmentCalculatorSection';
 import { ProblemSection } from './components/ProblemSection';
-import { PartnerCalculatorSection } from './components/PartnerCalculatorSection';
+import { HowItWorksSection } from './components/HowItWorksSection';
+import { WhySingaporeSection } from './components/WhySingaporeSection';
+import { MerchantEconomicsSection } from './components/MerchantEconomicsSection';
+import { LadderSection } from './components/LadderSection';
 import { WhatsDifferentSection } from './components/WhatsDifferentSection';
 import { FooterSection } from './components/FooterSection';
 import { AppPrototypeDrawer } from './components/AppPrototypeDrawer';
@@ -24,29 +24,29 @@ export default function App() {
         {/* 2. Hero Section */}
         <HeroSection onOpenAppPreview={() => setIsAppDrawerOpen(true)} />
 
-        {/* 3. Round-up Ticker */}
-        <RoundUpTicker />
+        {/* 3. Primary Commitment Calculator */}
+        <CommitmentCalculatorSection />
 
-        {/* 4. Goal Planner */}
-        <GoalPlannerSection />
-
-        {/* 5. The Ladder */}
-        <LadderSection />
-
-        {/* 6. How Money Moves */}
-        <HowMoneyMovesSection />
-
-        {/* 6. The Problem Statistics */}
+        {/* 4. The Problem Statistics */}
         <ProblemSection />
 
-        {/* 7. Partner Pot Calculator */}
-        <PartnerCalculatorSection />
+        {/* 5. How It Works (3 Steps) */}
+        <HowItWorksSection />
 
-        {/* 8. What's Different */}
+        {/* 6. The Rate Gap (Why Singapore) */}
+        <WhySingaporeSection />
+
+        {/* 7. Merchant Fundability */}
+        <MerchantEconomicsSection />
+
+        {/* 8. The Ladder */}
+        <LadderSection />
+
+        {/* 9. The Model */}
         <WhatsDifferentSection />
       </main>
 
-      {/* 9. Footer */}
+      {/* 10. Footer */}
       <FooterSection onOpenAppPreview={() => setIsAppDrawerOpen(true)} />
 
       {/* Interactive Mobile App Prototype Modal */}

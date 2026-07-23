@@ -26,31 +26,24 @@ interface ToggleOption {
 
 const FUNDING_SOURCES: ToggleOption[] = [
   {
-    id: 'roundups',
-    name: 'Round-ups',
-    description: '41 transactions a week',
-    monthlyAmount: 22,
-    defaultOn: true,
-  },
-  {
-    id: 'delivery',
-    name: 'Delivery rule',
-    description: 'S$3 every time you order in',
-    monthlyAmount: 12,
-    defaultOn: true,
-  },
-  {
-    id: 'transport',
-    name: 'Transport rule',
-    description: 'MRT instead of Grab',
-    monthlyAmount: 8,
-    defaultOn: false,
-  },
-  {
     id: 'payday',
     name: 'Payday sweep',
-    description: 'Fires on salary credit',
+    description: 'Fires automatically on salary credit',
+    monthlyAmount: 150,
+    defaultOn: true,
+  },
+  {
+    id: 'recurring',
+    name: 'Monthly allocation',
+    description: 'Fixed recurring transfer to goal pot',
     monthlyAmount: 100,
+    defaultOn: true,
+  },
+  {
+    id: 'bonus',
+    name: 'Discretionary savings',
+    description: 'Flexible monthly top-up',
+    monthlyAmount: 50,
     defaultOn: false,
   },
 ];
@@ -66,10 +59,9 @@ export const GoalPlanner: React.FC = () => {
 
   // Toggle States
   const [toggles, setToggles] = useState<Record<string, boolean>>({
-    roundups: true,
-    delivery: true,
-    transport: false,
-    payday: false,
+    payday: true,
+    recurring: true,
+    bonus: false,
   });
 
   // Slider State
@@ -126,13 +118,7 @@ export const GoalPlanner: React.FC = () => {
   // Progress ratio (0 to 1)
   const progressRatio = target > 0 ? Math.min(1, saved / target) : 0;
 
-  // Lever calculation (Block 4)
-  // Baseline without topUp
-  const baselineMonthly = activeSourcesSum;
-  const baselineMonths =
-    remaining <= 0 ? 0 : baselineMonthly <= 0 ? Infinity : Math.ceil(remaining / baselineMonthly);
-
-  // Recomputed +S$40 lever
+  // Lever calculation
   const leverAdd40Monthly = monthly + 40;
   const leverAdd40Months =
     remaining <= 0 ? 0 : Math.ceil(remaining / leverAdd40Monthly);
@@ -140,7 +126,10 @@ export const GoalPlanner: React.FC = () => {
   const leverAdd40MonthsSooner =
     isFinite(monthsNeeded) ? Math.max(0, monthsNeeded - leverAdd40Months) : 0;
 
-  // Top-up active delta
+  const baselineMonthly = activeSourcesSum;
+  const baselineMonths =
+    remaining <= 0 ? 0 : baselineMonthly <= 0 ? Infinity : Math.ceil(remaining / baselineMonthly);
+
   const topUpDeltaMonths =
     isFinite(baselineMonths) && isFinite(monthsNeeded)
       ? Math.max(0, baselineMonths - monthsNeeded)
@@ -160,9 +149,7 @@ export const GoalPlanner: React.FC = () => {
   return (
     <div className="w-full flex flex-col gap-8 bg-[#F2F4F1] border border-[#DCE3DD] rounded-2xl p-6 sm:p-8 lg:p-10 shadow-xs text-[#12241C]">
       
-      {/* =========================================================================
-          BLOCK 1 — PICK A GOAL
-         ========================================================================= */}
+      {/* BLOCK 1 — PICK A GOAL */}
       <div className="flex flex-col gap-3">
         <div className="mono-caption font-mono-code text-[12px] text-[#707972] uppercase tracking-wider">
           Pick a template or customize below
@@ -198,9 +185,7 @@ export const GoalPlanner: React.FC = () => {
         </div>
       </div>
 
-      {/* =========================================================================
-          BLOCK 2 — INPUTS AND FUNDING
-         ========================================================================= */}
+      {/* BLOCK 2 — INPUTS AND FUNDING */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
         
         {/* Left Column: The Goal */}
@@ -277,7 +262,7 @@ export const GoalPlanner: React.FC = () => {
             2. What's feeding this goal
           </div>
 
-          {/* 4 Toggle Rows */}
+          {/* Toggle Rows */}
           <div className="flex flex-col gap-3">
             {FUNDING_SOURCES.map((src) => {
               const isOn = !!toggles[src.id];
@@ -338,7 +323,7 @@ export const GoalPlanner: React.FC = () => {
             />
           </div>
 
-          {/* Live sum beneath list in Newsreader */}
+          {/* Live sum beneath list */}
           <div className="flex justify-between items-baseline pt-2 border-t border-[#DCE3DD]">
             <span className="text-[14px] font-sans-body text-[#707972]">
               Total monthly flow
@@ -351,9 +336,7 @@ export const GoalPlanner: React.FC = () => {
 
       </div>
 
-      {/* =========================================================================
-          BLOCK 3 — THE OUTPUT (Visual Hero)
-         ========================================================================= */}
+      {/* BLOCK 3 — THE OUTPUT */}
       <div className="bg-white p-6 sm:p-8 lg:p-10 rounded-2xl border border-[#DCE3DD] flex flex-col gap-6 shadow-xs">
         
         <div className="flex flex-col gap-2">
@@ -361,7 +344,6 @@ export const GoalPlanner: React.FC = () => {
             At your current pace you land in
           </span>
 
-          {/* Computed Date in Newsreader, clamp(2.5rem, 6vw, 5rem), Ink */}
           <motion.div
             key={`${landingDateStr}-${target}-${saved}-${monthly}`}
             initial={{ opacity: 0.2 }}
@@ -373,12 +355,11 @@ export const GoalPlanner: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Beneath in Mono: "S$740 of S$3,000 · S$34 a month" */}
         <div className="font-mono-code text-[14px] font-medium text-[#12241C] tabular-nums">
           {formatMoney(saved)} of {formatMoney(target)} · {formatMoney(monthly)} a month
         </div>
 
-        {/* Thin Sage progress track (No percentage figure anywhere) */}
+        {/* Thin Sage progress track */}
         <div className="w-full h-2 bg-[#DCE3DD] rounded-full overflow-hidden">
           <motion.div
             animate={{ width: `${progressRatio * 100}%` }}
@@ -387,7 +368,6 @@ export const GoalPlanner: React.FC = () => {
           />
         </div>
 
-        {/* Buffer Gate line beneath output */}
         <div className="font-mono-code text-[12px] text-[#707972] pt-2">
           {isEmergencyFund
             ? 'This is your Buffer. It fills before anything else.'
@@ -396,42 +376,32 @@ export const GoalPlanner: React.FC = () => {
 
       </div>
 
-      {/* =========================================================================
-          BLOCK 5 — HONESTY CHECKS (Show at most one at a time, above lever card)
-         ========================================================================= */}
+      {/* HONESTY CHECKS */}
       {saved >= target ? (
-        /* Honesty Check 1: Goal Reached */
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           className="p-5 bg-[#E8ECE7] border border-[#2F6B4F] rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
         >
           <p className="font-sans-body font-medium text-[15px] text-[#12241C]">
-            You're there. Spend it, roll it into a new goal, or move it to Seed.
+            You're there. Spend it or roll it into a new goal.
           </p>
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => alert('Option selected: Spend it!')}
-              className="px-3 py-1.5 border border-[#2F6B4F] text-[#2F6B4F] font-sans-body font-medium text-[13px] rounded-lg hover:bg-[#2F6B4F] hover:text-white transition-colors cursor-pointer"
+              className="px-3.5 py-1.5 border border-[#2F6B4F] bg-[#2F6B4F] text-white font-sans-body font-medium text-[13px] rounded-lg hover:bg-[#125238] transition-colors cursor-pointer"
             >
               Spend it
             </button>
             <button
               onClick={() => handleSelectTemplate(TEMPLATES[0])}
-              className="px-3 py-1.5 border border-[#2F6B4F] text-[#2F6B4F] font-sans-body font-medium text-[13px] rounded-lg hover:bg-[#2F6B4F] hover:text-white transition-colors cursor-pointer"
+              className="px-3.5 py-1.5 border border-[#2F6B4F] text-[#2F6B4F] font-sans-body font-medium text-[13px] rounded-lg hover:bg-[#2F6B4F] hover:text-white transition-colors cursor-pointer"
             >
               Roll into new goal
-            </button>
-            <button
-              onClick={() => alert('Option selected: Move to Seed!')}
-              className="px-3 py-1.5 border border-[#2F6B4F] text-[#2F6B4F] font-sans-body font-medium text-[13px] rounded-lg hover:bg-[#2F6B4F] hover:text-white transition-colors cursor-pointer"
-            >
-              Move to Seed
             </button>
           </div>
         </motion.div>
       ) : monthly === 0 ? (
-        /* Honesty Check 2: Monthly is 0 */
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -440,19 +410,16 @@ export const GoalPlanner: React.FC = () => {
           Turn on at least one source to see a date.
         </motion.div>
       ) : monthsNeeded > 120 ? (
-        /* Honesty Check 3: Takes >10 years (Turmeric-bordered card) */
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           className="p-5 bg-[#D9A521]/10 border border-[#D9A521] rounded-xl font-sans-body text-[14px] text-[#12241C] leading-relaxed"
         >
-          At this pace this takes {Math.round(monthsNeeded / 12)} years. Round-ups alone won't get you there — this goal needs a payday sweep or a smaller target.
+          At this pace this takes {Math.round(monthsNeeded / 12)} years. Small contributions alone won't get you there — this goal needs a payday sweep or a smaller target.
         </motion.div>
       ) : null}
 
-      {/* =========================================================================
-          BLOCK 4 — THE LEVER
-         ========================================================================= */}
+      {/* THE LEVER */}
       {saved < target && monthly > 0 && (
         <div className="p-5 bg-[#9FBF9C]/15 border border-[#9FBF9C] rounded-xl text-[#12241C] font-sans-body text-[15px] leading-relaxed">
           {topUpSlider === 0 ? (
@@ -467,9 +434,7 @@ export const GoalPlanner: React.FC = () => {
         </div>
       )}
 
-      {/* =========================================================================
-          BLOCK 6 — TIMELINE
-         ========================================================================= */}
+      {/* TIMELINE */}
       {saved < target && isFinite(monthsNeeded) && monthsNeeded > 0 && (
         <div className="flex flex-col gap-3 pt-2">
           <div className="mono-caption font-mono-code text-[12px] text-[#707972] uppercase tracking-wider">
@@ -477,7 +442,6 @@ export const GoalPlanner: React.FC = () => {
           </div>
 
           <div className="relative w-full pt-6 pb-2">
-            {/* Base line */}
             <div className="w-full h-1.5 bg-[#DCE3DD] rounded-full overflow-hidden relative">
               <motion.div
                 animate={{ width: `${progressRatio * 100}%` }}
@@ -486,7 +450,6 @@ export const GoalPlanner: React.FC = () => {
               />
             </div>
 
-            {/* 4 Evenly spaced milestone markers */}
             <div className="flex justify-between items-start mt-3">
               {[0, 0.33, 0.66, 1].map((pct, idx) => {
                 const mOffset = Math.round(monthsNeeded * pct);
