@@ -15,10 +15,10 @@ export const PartnerCalculatorSection: React.FC = () => {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="flex flex-col gap-4 mb-10 sm:mb-12 max-w-[720px]"
         >
-          <div className="mono-caption font-mono-code text-[#906a0c] text-[13px] tracking-[0.04em]">
+          <div className="mono-caption font-mono-code text-[#2F6B4F] text-[13px] tracking-[0.04em]">
             PARTNER REBATE ENGINE
           </div>
-          <h2 className="section-heading font-serif-display text-[#191C1B] font-medium">
+          <h2 className="section-heading font-serif-display text-[#12241C] font-medium">
             Partner pot calculator
           </h2>
           <p className="body-copy font-sans-body text-[#404943] text-[17px] leading-[1.6] max-w-[65ch]">
@@ -32,7 +32,7 @@ export const PartnerCalculatorSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
-          className="max-w-[840px] mx-auto"
+          className="w-full max-w-[1040px] mx-auto"
         >
           <PartnerCalculator />
         </motion.div>
